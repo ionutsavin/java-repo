@@ -49,5 +49,27 @@ public class Main {
             }
             System.out.println();
         }
+        int countCycles = 0;
+        System.out.println("The cycles are: ");
+        for (int i = 0; i < n - 1; i++) {
+            StringBuilder cycle = new StringBuilder();
+            cycle.append(i).append("->");
+            for (int j = 0; j < n - 2; j++) {
+                cycle.append(((i + j + 1) % (n - 1))).append("->");
+                countCycles++;
+                System.out.println("Cycle " + countCycles + " is: " + cycle + (n - 1) + "->" + i);
+            }
+        }
+        countCycles++;
+        System.out.print("Cycle " + countCycles + " is: ");
+        for (int i = 0; i < n - 1; i++) {
+            System.out.print(i + "->");
+        }
+        System.out.println(0);
+        if (n * n - 3 * n + 3 == countCycles) {
+            System.out.println("We have printed all the cycles!");
+        } else {
+            System.out.println("There are still cycles left to print");
+        }
     }
 }
