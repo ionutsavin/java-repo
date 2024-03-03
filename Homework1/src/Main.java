@@ -19,9 +19,9 @@ public class Main {
             }
 
             StringBuilder numbers = getStringBuilder(a, b, k);
+            System.out.println("The identified numbers are: " + numbers);
             long endTime = System.nanoTime();
             long executionTime = endTime - startTime;
-            System.out.println("The identified numbers are: " + numbers);
             System.out.println("The application ran for " + executionTime + " nanoseconds");
         } catch (NumberFormatException e) {
             System.err.println("Error: Arguments must be integers.");
