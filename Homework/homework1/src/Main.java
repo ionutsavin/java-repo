@@ -36,8 +36,7 @@ public class Main {
                 numbers.append(i).append(" ");
             }
         }
-        return numbers;
-    }
+        return numbers;   }
 
     private static boolean isKReducible(int number, int k) {
         Set<Integer> seenNumbers = new HashSet<>();
