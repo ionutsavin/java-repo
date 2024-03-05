@@ -1,16 +1,18 @@
 import java.time.LocalTime;
+
 public class Client {
     private String name;
     private LocalTime minTime;
     private LocalTime maxTime;
-    public Client(){}
 
-    public Client(String name)
-    {
+    public Client() {
+    }
+
+    public Client(String name) {
         this.name = name;
     }
-    public Client(String name, LocalTime minTime, LocalTime maxTime)
-    {
+
+    public Client(String name, LocalTime minTime, LocalTime maxTime) {
         this.name = name;
         this.minTime = minTime;
         this.maxTime = maxTime;
@@ -39,6 +41,7 @@ public class Client {
     public LocalTime getMaxTime() {
         return maxTime;
     }
+
     @java.lang.Override
     public String toString() {
         return "Client{" +

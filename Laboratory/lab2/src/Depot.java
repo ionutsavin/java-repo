@@ -1,9 +1,11 @@
 import java.util.*;
+
 public class Depot {
     private String name;
     private Vector<String> vehicles;
 
-    public Depot(){}
+    public Depot() {
+    }
 
     public Depot(String name) {
         this.name = name;
@@ -22,8 +24,7 @@ public class Depot {
         System.out.println(vehicles);
     }
 
-    public void addVehicle(Vehicle vehicle)
-    {
+    public void addVehicle(Vehicle vehicle) {
         vehicles.add(vehicle.getName());
         vehicle.setDepot(this);
     }
