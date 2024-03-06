@@ -32,7 +32,7 @@ public class Depot {
     @Override
     public String toString() {
         return "Depot{" +
-                "name='" + name + '\'' +
+                "name=" + name +
                 ", vehicles=" + vehicles +
                 '}';
     }
