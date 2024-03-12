@@ -17,6 +17,7 @@ public class Main {
         concertTimeTable.put(LocalDate.of(2024, 3, 15), new TimeInterval(LocalTime.of(20, 0), LocalTime.of(23, 0)));
         trip.addAttraction(new Concert("Kanye West Concert", 100.0, concertTimeTable));
 
+        Collections.sort(trip.getAttractions());
         System.out.println("Trip to " + trip.getCityName() + " from " + trip.getPeriodStart() + " to " + trip.getPeriodEnd() + ":");
         System.out.println("Attractions:");
         for (Attraction attraction : trip.getAttractions()) {
