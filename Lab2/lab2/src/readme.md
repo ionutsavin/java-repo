@@ -11,7 +11,6 @@ Vehicle{name=Vehicle 2, depot=null}
 Depot{name=Depot, vehicles=[Car 1]}
 ```
 ## Homework Component - output
-The generated equals and hashCode from IntelliJ for the Depot class are not working properly.
 ```bash
 Problem Depots:
 Depot{name=Depot 1, vehicles=[Truck 1]}
