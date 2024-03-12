@@ -20,9 +20,8 @@ public class Problem {
      * @param depots the depots to be set
      */
     public void setDepots(Depot... depots) {
-        /*Set<Depot> uniqueDepots = new HashSet<>(Arrays.asList(depots));
-        this.depots = uniqueDepots.toArray(new Depot[0]);*/
-        this.depots = depots;
+        Set<Depot> uniqueDepots = new HashSet<>(Arrays.asList(depots));
+        this.depots = uniqueDepots.toArray(new Depot[0]);
     }
 
     /**

@@ -95,7 +95,7 @@ public class Depot {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Depot depot = (Depot) o;
-        return Objects.equals(name, depot.name) && Arrays.equals(vehicles, depot.vehicles);
+        return Objects.equals(name, depot.name);
     }
 
     /**
@@ -105,8 +105,6 @@ public class Depot {
      */
     @Override
     public int hashCode() {
-        int result = Objects.hash(name);
-        result = 31 * result + Arrays.hashCode(vehicles);
-        return result;
+        return Objects.hash(name);
     }
 }

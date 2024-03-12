@@ -70,7 +70,6 @@ public class Main {
 
         depot1.setVehicles(truck1, truck2);
         depot2.setVehicles(drone1, drone2);
-        depot3.setVehicles(truck2);
 
         Client client1 = new Client("Client 1", ClientType.REGULAR);
         client1.setMinTime(LocalTime.of(10, 0));
