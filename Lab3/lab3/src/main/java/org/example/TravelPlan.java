@@ -1,6 +1,8 @@
 package org.example;
+
 import java.time.LocalDate;
 import java.util.*;
+
 public class TravelPlan {
     private final Trip trip;
     private final List<DayPlan> dayPlans;
@@ -11,6 +13,7 @@ public class TravelPlan {
         this.dayPlans = new ArrayList<>();
         this.visitedAttractions = new HashSet<>();
     }
+
     public void generatePlan() {
         LocalDate currentDate = trip.getStartDate();
         while (!currentDate.isAfter(trip.getEndDate())) {

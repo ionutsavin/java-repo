@@ -1,6 +1,8 @@
 package org.example;
+
 import java.time.LocalDate;
 import java.util.*;
+
 public class Trip {
     private final String cityName;
     private final LocalDate startDate;
@@ -33,6 +35,7 @@ public class Trip {
     public LocalDate getEndDate() {
         return endDate;
     }
+
     public void visitableLocationsButNotPayable(LocalDate date) {
         List<Attraction> attractionsNotPayable = new ArrayList<>();
         for (Attraction a : attractions) {
