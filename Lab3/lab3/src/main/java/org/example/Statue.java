@@ -1,7 +1,7 @@
 package org.example;
 
-import java.time.*;
-import java.util.*;
+import java.time.LocalDate;
+import java.util.Map;
 
 public class Statue extends Attraction implements Visitable {
 
