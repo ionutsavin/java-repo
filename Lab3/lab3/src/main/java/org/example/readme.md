@@ -1,4 +1,4 @@
-## Compulsory Component
+## Compulsory Component - all requirements
 
 ```bash
 Trip to Paris from 08:00 to 23:00:
@@ -15,7 +15,7 @@ Opening hour: 12:00
 Finishing hour: 15:00
 ```
 
-## Homework Component
+## Homework Component - all requirements
 ```bash
 Trip to Paris from 2024-03-10 to 2024-03-15:
 Attractions on day 2024-03-15:
