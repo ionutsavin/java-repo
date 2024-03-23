@@ -13,6 +13,7 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("com.github.javafaker:javafaker:1.0.2")
+    implementation("org.jgrapht:jgrapht-core:1.5.2")
 }
 
 tasks.test {

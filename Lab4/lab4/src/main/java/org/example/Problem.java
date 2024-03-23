@@ -41,11 +41,7 @@ public class Problem {
                     passengers.remove(compatiblePassenger);
                 }
             }
-
         }
-
         return carpoolingResult;
     }
-
-
 }
