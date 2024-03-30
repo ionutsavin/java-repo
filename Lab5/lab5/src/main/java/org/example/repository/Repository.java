@@ -1,4 +1,7 @@
-package org.example;
+package org.example.repository;
+
+import org.example.records.Document;
+import org.example.records.Person;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -64,6 +67,10 @@ public class Repository {
             return "";
         }
         return fileName.substring(dotIndex + 1).toLowerCase();
+    }
+
+    public String getDirectory() {
+        return directory;
     }
 
     public Map<Person, List<Document>> getDocuments() {

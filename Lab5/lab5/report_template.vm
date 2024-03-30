@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Report</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Employee Report</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Documents</th>
+    </tr>
+    #foreach($entry in $repository.getDocuments().entrySet())
+        #set($person = $entry.getKey())
+        #set($documents = $entry.getValue())
+        <tr>
+            <td>$person.id()</td>
+            <td>$person.name()</td>
+            <td>
+                <ul>
+                    #foreach($document in $documents)
+                        <li>$document.fileName()</li>
+                    #end
+                </ul>
+            </td>
+        </tr>
+    #end
+</table>
+</body>
+</html>

@@ -13,3 +13,19 @@ Person: Savin (ID: 1001)
 Person: Ronaldo (ID: 1004)
    Document: provocare.jpg (jpg)
 ```
+
+## Homework Component - all requirements
+```bash
+Enter command (view, report, export, or exit): 
+view
+Enter document name: 
+circuite.pdf
+Enter command (view, report, export, or exit): 
+export
+Repository exported to: C:\Java\java-repo\Lab5\lab5\repository_export.json
+Enter command (view, report, export, or exit): 
+report
+Enter command (view, report, export, or exit): 
+exit
+Exiting...
+```
