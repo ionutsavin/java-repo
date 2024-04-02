@@ -56,9 +56,15 @@ public class Main {
     }
 
     private static void executeViewCommand(Scanner scanner, Repository repository) {
+        System.out.println("Enter directory of the document: ");
+        String documentDirectory = scanner.nextLine();
+        String[] words = documentDirectory.split("_");
+        Person person = new Person(Integer.parseInt(words[1]), words[0]);
+
         System.out.println("Enter document name: ");
         String documentName = scanner.nextLine();
-        ViewCommand viewCommand = new ViewCommand(documentName, repository);
+
+        ViewCommand viewCommand = new ViewCommand(documentName, repository, person);
         viewCommand.execute();
     }
 

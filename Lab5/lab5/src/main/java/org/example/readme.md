@@ -18,6 +18,8 @@ Person: Ronaldo (ID: 1004)
 ```bash
 Enter command (view, report, export, or exit): 
 view
+Enter directory of the document:
+James_1003
 Enter document name: 
 circuite.pdf
 Enter command (view, report, export, or exit): 

@@ -13,10 +13,12 @@ import java.util.Map;
 public class ViewCommand implements Command {
     private final String documentName;
     private final Repository repository;
+    private final Person person;
 
-    public ViewCommand(String documentName, Repository repository) {
+    public ViewCommand(String documentName, Repository repository, Person person) {
         this.documentName = documentName;
         this.repository = repository;
+        this.person = person;
     }
 
     @Override
@@ -41,10 +43,12 @@ public class ViewCommand implements Command {
 
     private File getFileByName(String fileName) {
         for (Map.Entry<Person, List<Document>> entry : repository.getDocuments().entrySet()) {
-            List<Document> documents = entry.getValue();
-            for (Document document : documents) {
-                if (document.fileName().equals(fileName)) {
-                    return new File(repository.getDirectory(), entry.getKey().name() + "_" + entry.getKey().id() + "\\" + fileName);
+            if (entry.getKey().equals(person)) {
+                List<Document> documents = entry.getValue();
+                for (Document document : documents) {
+                    if (document.fileName().equals(fileName)) {
+                        return new File(repository.getDirectory(), entry.getKey().name() + "_" + entry.getKey().id() + "\\" + fileName);
+                    }
                 }
             }
         }
