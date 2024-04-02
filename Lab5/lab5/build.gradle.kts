@@ -26,6 +26,7 @@ tasks.jar {
         attributes["Main-Class"] = "org.example.Main"
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    //duplicatesStrategy = DuplicatesStrategy.WARN
     from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
 }
 
