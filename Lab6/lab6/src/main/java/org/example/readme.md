@@ -1,3 +1,3 @@
 ## Compulsory component - all requirements
 
-![Output](src\main\resources\game.png)
+![Output](C:\Java\java-repo\Lab6\lab6\src\main\resources\game.png)
