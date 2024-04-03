@@ -1,3 +1,3 @@
 ## Compulsory component - all requirements
 
-![Output](Lab6/lab6/game.png)
+![Output](https://github.com/ionutsavin/java-repo/blob/main/Lab6/lab6/game.png)
