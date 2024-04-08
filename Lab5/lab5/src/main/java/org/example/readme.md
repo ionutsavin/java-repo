@@ -31,3 +31,7 @@ Enter command (view, report, export, or exit):
 exit
 Exiting...
 ```
+Command to run the jar:
+```bash
+java -jar ./build/libs/lab5-1.0-SNAPSHOT.jar
+```

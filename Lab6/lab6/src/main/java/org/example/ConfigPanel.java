@@ -29,12 +29,11 @@ public class ConfigPanel extends JPanel {
         add(spinnerCols);
         add(newGameButton);
 
-        newGameButton.addActionListener(e -> {
-            int rows = (int) spinnerRows.getValue();
-            int cols = (int) spinnerCols.getValue();
-            frame.getCanvas().init(rows, cols);
-            frame.getCanvas().repaint();
-        });
+            newGameButton.addActionListener(e -> {
+                int rows = (int) spinnerRows.getValue();
+                int cols = (int) spinnerCols.getValue();
+                frame.getCanvas().init(rows, cols);
+                frame.getCanvas().repaint();
+            });
     }
 }
-

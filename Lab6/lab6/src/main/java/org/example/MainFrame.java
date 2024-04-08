@@ -13,7 +13,7 @@ public class MainFrame extends JFrame {
         init();
     }
 
-    private void init() {
+    public void init() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         configPanel = new ConfigPanel(this);
