@@ -1,6 +1,8 @@
 package org.example;
 import java.awt.*;
-public class Stick {
+import java.io.Serializable;
+
+public class Stick implements Serializable {
     private final int x1, y1, x2, y2;
 
     public Stick(int x1, int y1, int x2, int y2) {

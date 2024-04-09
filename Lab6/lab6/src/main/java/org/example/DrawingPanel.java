@@ -11,18 +11,21 @@ import java.util.List;
 import java.util.Random;
 
 public class DrawingPanel extends JPanel {
-    int rows, cols;
-    int canvasWidth = 400, canvasHeight = 400;
-    int boardWidth, boardHeight;
-    int cellWidth, cellHeight;
+    private int rows, cols;
+    int canvasWidth = 400;
+    int canvasHeight = 400;
+    private int boardWidth, boardHeight;
+    private int cellWidth, cellHeight;
     int padX, padY;
     int stoneSize = 20;
     private List<Line2D> gridLines;
     private List<Stick> sticks;
+    private List<Stone> stones;
     private boolean isPlayer1Turn;
     private int prevSelectedX;
     private int prevSelectedY;
     private boolean[][] coloredOvals;
+    private GameState gameState;
 
     public DrawingPanel() {
         init(10, 10);
@@ -37,6 +40,7 @@ public class DrawingPanel extends JPanel {
         this.cellHeight = (canvasHeight - 2 * padY) / (rows - 1);
         this.boardWidth = (cols - 1) * cellWidth;
         this.boardHeight = (rows - 1) * cellHeight;
+        this.stones = new ArrayList<>();
         this.coloredOvals = new boolean[rows][cols];
         this.prevSelectedX = -1;
         this.prevSelectedY = -1;
@@ -60,19 +64,20 @@ public class DrawingPanel extends JPanel {
                 int Y = (e.getY() - padY) / cellHeight;
 
                 if (isValidMove(X, Y)) {
-                    drawStone(X, Y);
+                    addStone(X, Y);
+                    repaint();
                     prevSelectedX = X;
                     prevSelectedY = Y;
-                    if(isGameOver()){
-                        if(isPlayer1Turn){
+                    if (isGameOver()) {
+                        if (isPlayer1Turn) {
                             JOptionPane.showMessageDialog(getTopLevelAncestor(), "Game Over! Player 1 Wins!");
-                        }else{
+                        } else {
                             JOptionPane.showMessageDialog(getTopLevelAncestor(), "Game Over! Player 2 Wins!");
                         }
                     }
                     isPlayer1Turn = !isPlayer1Turn;
-                } else{
-                    if(!isGameOver()){
+                } else {
+                    if (!isGameOver()) {
                         JOptionPane.showMessageDialog(getTopLevelAncestor(), "Invalid move! Please select another node.");
                     }
                 }
@@ -119,6 +124,13 @@ public class DrawingPanel extends JPanel {
         }
     }
 
+    private void addStone(int X, int Y) {
+        coloredOvals[Y][X] = true;
+        int x = padX + X * cellWidth;
+        int y = padY + Y * cellHeight;
+        Stone stone = new Stone(x, y, isPlayer1Turn ? Color.RED : Color.BLUE);
+        stones.add(stone);
+    }
 
     @Override
     protected void paintComponent(Graphics graphics) {
@@ -144,11 +156,9 @@ public class DrawingPanel extends JPanel {
         }
         for (Stick stick : sticks) {
             stick.draw(g);
-            int x1 = (stick.getX1() - padX) / cellWidth;
-            int y1 = (stick.getY1() - padY) / cellHeight;
-            int x2 = (stick.getX2() - padX) / cellWidth;
-            int y2 = (stick.getY2() - padY) / cellHeight;
-            System.out.println(x1 + " " + y1 + " "+ x2 + " " + y2);
+        }
+        for (Stone stone : stones) {
+            stone.draw(g);
         }
     }
 
@@ -202,16 +212,29 @@ public class DrawingPanel extends JPanel {
         return true;
     }
 
-    private void drawStone(int X, int Y) {
-        Graphics2D g = (Graphics2D) getGraphics();
-        if (isPlayer1Turn) {
-            g.setColor(Color.RED);
-        } else {
-            g.setColor(Color.BLUE);
+    public void saveGameState(String fileName) {
+        gameState = new GameState(rows, cols, boardWidth, boardHeight, cellWidth, cellHeight, gridLines,
+                stones, sticks, coloredOvals, isPlayer1Turn, prevSelectedX, prevSelectedY);
+        gameState.saveToFile(fileName);
+    }
+
+    public void updateGameState(GameState loadedGameState) {
+        gameState = loadedGameState;
+        if (gameState != null) {
+            this.rows = gameState.getRows();
+            this.cols = gameState.getCols();
+            this.boardWidth = gameState.getBoardWidth();
+            this.boardHeight = gameState.getBoardHeight();
+            this.cellWidth = gameState.getCellWidth();
+            this.cellHeight = gameState.getCellHeight();
+            this.gridLines = gameState.getGridLines();
+            this.stones = gameState.getStones();
+            this.sticks = gameState.getSticks();
+            this.coloredOvals = gameState.getColoredOvals();
+            this.isPlayer1Turn = gameState.isPlayer1Turn();
+            this.prevSelectedX = gameState.getPrevSelectedX();
+            this.prevSelectedY = gameState.getPrevSelectedY();
+            repaint();
         }
-        coloredOvals[Y][X] = true;
-        int x = padX + X * cellWidth;
-        int y = padY + Y * cellHeight;
-        g.fillOval(x - stoneSize / 2, y - stoneSize / 2, stoneSize, stoneSize);
     }
 }

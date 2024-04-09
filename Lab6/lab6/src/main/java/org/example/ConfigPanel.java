@@ -36,4 +36,9 @@ public class ConfigPanel extends JPanel {
                 frame.getCanvas().repaint();
             });
     }
+
+    public void updateSpinners(int rows, int cols) {
+        spinnerRows.setValue(rows);
+        spinnerCols.setValue(cols);
+    }
 }

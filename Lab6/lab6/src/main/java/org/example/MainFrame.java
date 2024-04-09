@@ -30,6 +30,10 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
 
+    public ConfigPanel getConfigPanel() {
+        return configPanel;
+    }
+
     public DrawingPanel getCanvas() {
         return canvas;
     }
