@@ -9,6 +9,14 @@ public class Tile {
         this.number2 = number2;
     }
 
+    public int getNumber1() {
+        return number1;
+    }
+
+    public int getNumber2() {
+        return number2;
+    }
+
     @Override
     public String toString() {
         return "(" + number1 + "," + number2 + ")";

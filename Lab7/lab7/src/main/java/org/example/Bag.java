@@ -7,12 +7,16 @@ import java.util.List;
 
 public class Bag {
     private final List<Tile> tiles;
+    int n;
 
     public Bag(int n) {
+        this.n = n;
         tiles = new LinkedList<>();
         for (int i = 1; i <= n; i++) {
-            for (int j = i + 1; j <= n; j++) {
-                tiles.add(new Tile(i, j));
+            for (int j = 1; j <= n; j++) {
+                if (i != j) {
+                    tiles.add(new Tile(i, j));
+                }
             }
         }
         Collections.shuffle(tiles);
@@ -22,10 +26,14 @@ public class Bag {
         return tiles;
     }
 
-    public synchronized List<Tile> extractTiles(int howMany) {
+    public int getN() {
+        return n;
+    }
+
+    public synchronized List<Tile> extractTiles(int index) {
         List<Tile> extracted = new ArrayList<>();
-        for (int i = 0; i < howMany && !tiles.isEmpty(); i++) {
-            extracted.add(tiles.remove(0));
+        if (index >= 0 && index < tiles.size()) {
+            extracted.add(tiles.remove(index));
         }
         return extracted;
     }
