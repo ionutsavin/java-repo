@@ -1,33 +1,32 @@
 package org.example;
 
+import java.io.IOException;
 import java.sql.SQLException;
+
 public class Main {
     public static void main(String[] args) {
         try {
-            AuthorDAO authorDAO = new AuthorDAO();
+            DataImporter dataImporter = new DataImporter();
+            dataImporter.importDataFromCSV();
 
-            authorDAO.create("William Shakespeare");
-            System.out.println("Author created successfully.");
-            Database.getConnection().commit();
-
-            String authorName = "William Shakespeare";
-            Integer authorId = authorDAO.findByName(authorName);
-            if (authorId != null) {
-                System.out.println("Author found with ID: " + authorId);
-            } else {
-                System.out.println("Author not found with name: " + authorName);
-            }
-
-            int idToFind = authorId != null ? authorId : 1;
-            String foundAuthorName = authorDAO.findById(idToFind);
-            if (foundAuthorName != null) {
-                System.out.println("Author name found by ID " + idToFind + ": " + foundAuthorName);
-            } else {
-                System.out.println("Author name not found for ID: " + idToFind);
-            }
+            /*BookDAO bookDAO = new BookDAO();
+            for (Book book : bookDAO.findAll()) {
+                System.out.println("Book: " + book.getTitle());
+                System.out.println("Publication year: " + book.getPublicationYear());
+                System.out.println("Authors:");
+                for (Author author : book.getAuthors()) {
+                    System.out.println(author.getName());
+                }
+                System.out.println("Genres:");
+                for (Genre genre : book.getGenres()) {
+                    System.out.println(genre.getName());
+                }
+                System.out.println();
+            }*/
         } catch (SQLException e) {
             System.err.println(e);
-            Database.rollback();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

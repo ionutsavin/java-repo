@@ -4,17 +4,16 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AuthorDAO implements GenericDAO<Author> {
+public class GenreDAO implements GenericDAO<Genre> {
     @Override
-    public void create(Author author) throws SQLException {
+    public void create(Genre genre) throws SQLException {
         Connection con = Database.getConnection();
         try {
             try (PreparedStatement pstmt = con.prepareStatement(
-                    "INSERT INTO authors (name) VALUES (?)")) {
-                pstmt.setString(1, author.getName());
+                    "INSERT INTO genres (name) VALUES (?)")) {
+                pstmt.setString(1, genre.getName());
                 pstmt.executeUpdate();
             }
-            con.commit();
         } catch (SQLException e) {
             Database.rollback(con);
             throw e;
@@ -24,27 +23,29 @@ public class AuthorDAO implements GenericDAO<Author> {
     }
 
     @Override
-    public List<Author> findAll() throws SQLException {
-        List<Author> authorList = new ArrayList<>();
+    public List<Genre> findAll() throws SQLException {
+        List<Genre> genreList = new ArrayList<>();
         Connection con = Database.getConnection();
         try (Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(
-                     "SELECT * FROM authors")) {
+                     "SELECT * FROM genres")) {
             while (rs.next()) {
-                Author author = new Author(rs.getString("name"));
-                authorList.add(author);
+                Genre genre = new Genre(rs.getString("name"));
+                genreList.add(genre);
             }
         }
-        return authorList;
+        return genreList;
     }
 
     @Override
     public Integer findByName(String name) throws SQLException {
         Connection con = Database.getConnection();
-        try (Statement stmt = con.createStatement();
-             ResultSet rs = stmt.executeQuery(
-                     "SELECT id FROM authors WHERE name='" + name + "'")) {
-            return rs.next() ? rs.getInt(1) : null;
+        try (PreparedStatement pstmt = con.prepareStatement(
+                "SELECT id FROM genres WHERE name = ?")) {
+            pstmt.setString(1, name);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                return rs.next() ? rs.getInt(1) : null;
+            }
         }
     }
 
@@ -52,7 +53,7 @@ public class AuthorDAO implements GenericDAO<Author> {
     public String findById(int id) throws SQLException {
         Connection con = Database.getConnection();
         try (PreparedStatement pstmt = con.prepareStatement(
-                "SELECT name FROM authors WHERE id = ?")) {
+                "SELECT name FROM genres WHERE id = ?")) {
             pstmt.setInt(1, id);
             try (ResultSet rs = pstmt.executeQuery()) {
                 return rs.next() ? rs.getString("name") : null;
@@ -60,3 +61,4 @@ public class AuthorDAO implements GenericDAO<Author> {
         }
     }
 }
+

@@ -1,46 +1,47 @@
 package org.example;
 
-import java.sql.*;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class Database {
-    private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
-    private static final String USER = "postgres";
-    private static Connection connection = null;
+    private static final HikariDataSource dataSource;
+
+    static {
+        HikariConfig config = new HikariConfig();
+        config.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres");
+        config.setUsername("postgres");
+        config.setPassword("");
+        config.setMaximumPoolSize(20);
+        config.setConnectionTimeout(300000);
+        config.setConnectionTimeout(120000);
+        config.setLeakDetectionThreshold(300000);
+        dataSource = new HikariDataSource(config);
+    }
 
     private Database() {}
 
-    public static Connection getConnection() {
-        if (connection == null) {
-            createConnection();
-        }
-        return connection;
+    public static Connection getConnection() throws SQLException {
+        return dataSource.getConnection();
     }
 
-    private static void createConnection() {
-        try {
-            connection = DriverManager.getConnection(URL, USER, "");
-            connection.setAutoCommit(false);
-        } catch (SQLException e) {
-            System.err.println(e);
-        }
-    }
-
-    public static void closeConnection() {
+    public static void closeConnection(Connection connection) {
         if (connection != null) {
             try {
                 connection.close();
             } catch (SQLException e) {
-                System.err.println(e);
+                System.err.println("Error closing connection: " + e.getMessage());
             }
         }
     }
 
-    public static void rollback() {
+    public static void rollback(Connection connection) {
         if (connection != null) {
             try {
                 connection.rollback();
             } catch (SQLException e) {
-                System.err.println(e);
+                System.err.println("Error rolling back transaction: " + e.getMessage());
             }
         }
     }
