@@ -9,6 +9,7 @@ public class BookDAO implements GenericDAO<Book> {
     public void create(Book book) throws SQLException {
         Connection con = Database.getConnection();
         try {
+            con.setAutoCommit(false);
             try (PreparedStatement pstmt = con.prepareStatement(
                     "INSERT INTO books (publication_year, title) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
                 pstmt.setInt(1, book.getPublicationYear());
@@ -43,14 +44,13 @@ public class BookDAO implements GenericDAO<Book> {
                         pstmtBookGenres.executeUpdate();
                     }
                 }
+                con.commit();
             }
         } catch (SQLException e) {
             Database.rollback(con);
             throw e;
-        } finally {
-            con.setAutoCommit(true);
-            Database.closeConnection(con);
         }
+        Database.closeConnection(con);
     }
 
     private Integer findOrCreateAuthorId(String authorName) throws SQLException {

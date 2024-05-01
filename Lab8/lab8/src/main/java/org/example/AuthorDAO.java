@@ -9,6 +9,7 @@ public class AuthorDAO implements GenericDAO<Author> {
     public void create(Author author) throws SQLException {
         Connection con = Database.getConnection();
         try {
+            con.setAutoCommit(false);
             try (PreparedStatement pstmt = con.prepareStatement(
                     "INSERT INTO authors (name) VALUES (?)")) {
                 pstmt.setString(1, author.getName());
@@ -18,9 +19,8 @@ public class AuthorDAO implements GenericDAO<Author> {
         } catch (SQLException e) {
             Database.rollback(con);
             throw e;
-        } finally {
-            Database.closeConnection(con);
         }
+        Database.closeConnection(con);
     }
 
     @Override

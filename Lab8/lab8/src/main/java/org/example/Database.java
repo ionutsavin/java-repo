@@ -13,10 +13,6 @@ public class Database {
         config.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres");
         config.setUsername("postgres");
         config.setPassword("");
-        config.setMaximumPoolSize(20);
-        config.setConnectionTimeout(300000);
-        config.setConnectionTimeout(120000);
-        config.setLeakDetectionThreshold(300000);
         dataSource = new HikariDataSource(config);
     }
 

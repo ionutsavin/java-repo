@@ -9,17 +9,18 @@ public class GenreDAO implements GenericDAO<Genre> {
     public void create(Genre genre) throws SQLException {
         Connection con = Database.getConnection();
         try {
+            con.setAutoCommit(false);
             try (PreparedStatement pstmt = con.prepareStatement(
                     "INSERT INTO genres (name) VALUES (?)")) {
                 pstmt.setString(1, genre.getName());
                 pstmt.executeUpdate();
             }
+            con.commit();
         } catch (SQLException e) {
             Database.rollback(con);
             throw e;
-        } finally {
-            Database.closeConnection(con);
         }
+        Database.closeConnection(con);
     }
 
     @Override
