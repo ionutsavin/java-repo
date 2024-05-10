@@ -5,7 +5,7 @@
              version="3.0">
   <persistence-unit name="ExamplePU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>org.example.AuthorsRepository</class>
+    <class>org.example.repositories.AuthorsRepository</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>

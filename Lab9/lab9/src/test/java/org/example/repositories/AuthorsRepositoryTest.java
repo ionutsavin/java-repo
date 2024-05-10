@@ -1,12 +1,15 @@
-package org.example;
+package org.example.repositories;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.example.EntityManagerFactorySingleton;
 import org.example.entities.Author;
 import org.junit.jupiter.api.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+
 import java.util.List;
+
 
 public class AuthorsRepositoryTest {
 
@@ -39,9 +42,10 @@ public class AuthorsRepositoryTest {
 
     @Test
     void findById() {
-        Author author = authorsRepository.findById(1);
+        Author author = authorsRepository.findById(2);
         assertNotNull(author);
-        assertEquals("William Shakespeare", author.getName());
+        assertEquals("Stephen King", author.getName());
+        assertNotNull(author.getBooks());
     }
 
     @Test
@@ -52,18 +56,27 @@ public class AuthorsRepositoryTest {
     }
 
     @Test
-    void createAuthor() {
-        authorsRepository.createAuthor("Mark Twain");
+    void findByBookTitle() {
+        List<Author> authors = authorsRepository.findByBookTitle("The Hobbit");
+        assertNotNull(authors);
+        assertEquals(1, authors.size());
+        assertEquals("J. R. R. Tolkien", authors.get(0).getName());
+    }
 
-        Author newAuthor = authorsRepository.findByName("Mark Twain");
+    @Test
+    void createAuthor() {
+        authorsRepository.createAuthor("William Shakespeare");
+
+        Author newAuthor = authorsRepository.findByName("William Shakespeare");
         assertNotNull(newAuthor);
-        assertEquals("Mark Twain", newAuthor.getName());
+        assertEquals("William Shakespeare", newAuthor.getName());
+        assertEquals("Romeo and Juliet", newAuthor.getBooks().iterator().next().getTitle());
     }
 
     @Test
     void findAll() {
         List<Author> authors = authorsRepository.findAll();
         assertNotNull(authors);
-        assertEquals(14, authors.size());
+        assertEquals(15, authors.size());
     }
 }

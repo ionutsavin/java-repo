@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.52">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>1056</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1111</IntrospectionStateNumber>
       <ServerVersion>16.2</ServerVersion>
-      <StartupTime>1714569839</StartupTime>
+      <StartupTime>1715248852</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -801,7 +801,7 @@ false Zulu
 14697||10|C|G
 14697||-9223372036854775808|U|G
 14697||10|U|G</Grants>
-      <IntrospectionStateNumber>1056</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1111</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4234,8 +4234,8 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>1056</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-05-03.16:34:34</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>1111</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-05-10.16:28:35</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4264,37 +4264,51 @@ false Zulu
       <StateNumber>780</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="268" parent="264" name="authors">
+    <sequence id="268" parent="264" name="publishing_houses_id_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>40975</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>11</StartValue>
+      <StateNumber>1099</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="269" parent="264" name="authors">
       <ObjectId>24577</ObjectId>
       <StateNumber>748</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="269" parent="264" name="book_authors">
+    <table id="270" parent="264" name="book_authors">
       <ObjectId>32777</ObjectId>
       <StateNumber>790</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="270" parent="264" name="book_genres">
+    <table id="271" parent="264" name="book_genres">
       <ObjectId>32792</ObjectId>
       <StateNumber>792</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="271" parent="264" name="books">
+    <table id="272" parent="264" name="books">
       <ObjectId>32771</ObjectId>
-      <StateNumber>790</StateNumber>
+      <StateNumber>1088</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="272" parent="264" name="genres">
+    <table id="273" parent="264" name="genres">
       <ObjectId>24584</ObjectId>
       <StateNumber>748</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="273" parent="268" name="id">
+    <table id="274" parent="264" name="publishing_houses">
+      <ObjectId>40965</ObjectId>
+      <StateNumber>1088</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="275" parent="269" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;authors_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4303,14 +4317,14 @@ false Zulu
       <SequenceId>24576</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="274" parent="268" name="name">
+    <column id="276" parent="269" name="name">
       <DasType>varchar(100)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>744</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="275" parent="268" name="authors_pkey">
+    <index id="277" parent="269" name="authors_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>24581</ObjectId>
@@ -4319,28 +4333,28 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="276" parent="268" name="authors_pkey">
+    <key id="278" parent="269" name="authors_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>24582</ObjectId>
       <Primary>1</Primary>
       <StateNumber>744</StateNumber>
       <UnderlyingIndexId>24581</UnderlyingIndexId>
     </key>
-    <column id="277" parent="269" name="book_id">
+    <column id="279" parent="270" name="book_id">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>790</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="278" parent="269" name="author_id">
+    <column id="280" parent="270" name="author_id">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>790</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="279" parent="269" name="book_authors_book_id_fkey">
+    <foreign-key id="281" parent="270" name="book_authors_book_id_fkey">
       <ColNames>book_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>32782</ObjectId>
@@ -4348,7 +4362,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>32771</RefTableId>
     </foreign-key>
-    <foreign-key id="280" parent="269" name="book_authors_author_id_fkey">
+    <foreign-key id="282" parent="270" name="book_authors_author_id_fkey">
       <ColNames>author_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>32787</ObjectId>
@@ -4356,7 +4370,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>24577</RefTableId>
     </foreign-key>
-    <index id="281" parent="269" name="book_authors_pkey">
+    <index id="283" parent="270" name="book_authors_pkey">
       <ColNames>book_id
 author_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -4366,28 +4380,28 @@ author_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="282" parent="269" name="book_authors_pkey">
+    <key id="284" parent="270" name="book_authors_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>32781</ObjectId>
       <Primary>1</Primary>
       <StateNumber>790</StateNumber>
       <UnderlyingIndexId>32780</UnderlyingIndexId>
     </key>
-    <column id="283" parent="270" name="book_id">
+    <column id="285" parent="271" name="book_id">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>792</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="284" parent="270" name="genre_id">
+    <column id="286" parent="271" name="genre_id">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>792</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="285" parent="270" name="book_genres_book_id_fkey">
+    <foreign-key id="287" parent="271" name="book_genres_book_id_fkey">
       <ColNames>book_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>32797</ObjectId>
@@ -4395,7 +4409,7 @@ author_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>32771</RefTableId>
     </foreign-key>
-    <foreign-key id="286" parent="270" name="book_genres_genre_id_fkey">
+    <foreign-key id="288" parent="271" name="book_genres_genre_id_fkey">
       <ColNames>genre_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>32802</ObjectId>
@@ -4403,7 +4417,7 @@ author_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>24584</RefTableId>
     </foreign-key>
-    <index id="287" parent="270" name="book_genres_pkey">
+    <index id="289" parent="271" name="book_genres_pkey">
       <ColNames>book_id
 genre_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -4413,14 +4427,14 @@ genre_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="288" parent="270" name="book_genres_pkey">
+    <key id="290" parent="271" name="book_genres_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>32796</ObjectId>
       <Primary>1</Primary>
       <StateNumber>792</StateNumber>
       <UnderlyingIndexId>32795</UnderlyingIndexId>
     </key>
-    <column id="289" parent="271" name="id">
+    <column id="291" parent="272" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;books_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4429,21 +4443,35 @@ genre_id</ColNames>
       <SequenceId>32770</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="290" parent="271" name="publication_year">
+    <column id="292" parent="272" name="publication_year">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>788</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="291" parent="271" name="title">
+    <column id="293" parent="272" name="title">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>788</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="292" parent="271" name="books_pkey">
+    <column id="294" parent="272" name="publishing_house_id">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>1094</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="295" parent="272" name="fk_publishing_house">
+      <ColNames>publishing_house_id</ColNames>
+      <ObjectId>40970</ObjectId>
+      <StateNumber>1088</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>40965</RefTableId>
+    </foreign-key>
+    <index id="296" parent="272" name="books_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>32775</ObjectId>
@@ -4452,14 +4480,14 @@ genre_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="293" parent="271" name="books_pkey">
+    <key id="297" parent="272" name="books_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>32776</ObjectId>
       <Primary>1</Primary>
       <StateNumber>788</StateNumber>
       <UnderlyingIndexId>32775</UnderlyingIndexId>
     </key>
-    <column id="294" parent="272" name="id">
+    <column id="298" parent="273" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;genres_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4468,14 +4496,14 @@ genre_id</ColNames>
       <SequenceId>24583</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="295" parent="272" name="name">
+    <column id="299" parent="273" name="name">
       <DasType>varchar(100)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>746</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="296" parent="272" name="genres_pkey">
+    <index id="300" parent="273" name="genres_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>24588</ObjectId>
@@ -4484,12 +4512,43 @@ genre_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="297" parent="272" name="genres_pkey">
+    <key id="301" parent="273" name="genres_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>24589</ObjectId>
       <Primary>1</Primary>
       <StateNumber>746</StateNumber>
       <UnderlyingIndexId>24588</UnderlyingIndexId>
+    </key>
+    <column id="302" parent="274" name="id">
+      <DasType>integer|0s</DasType>
+      <DefaultExpression>nextval(&apos;publishing_houses_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1101</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="303" parent="274" name="name">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1085</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="304" parent="274" name="publishing_houses_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>40968</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1085</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="305" parent="274" name="publishing_houses_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>40969</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1085</StateNumber>
+      <UnderlyingIndexId>40968</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>
