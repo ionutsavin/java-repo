@@ -29,10 +29,11 @@ public class AuthorsRepository extends DataRepository<Author, Integer> {
             logger.log(Level.INFO, "FindByName operation executed successfully in " + (endTime - startTime) + " milliseconds.");
             return result;
         } catch (NoResultException e) {
+            logger.log(Level.WARNING, "Author with name " + name + " not found.");
             return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error occurred during findByName operation", e);
-            return null;
+            throw e;
         }
     }
 
@@ -59,9 +60,12 @@ public class AuthorsRepository extends DataRepository<Author, Integer> {
             long endTime = System.currentTimeMillis();
             logger.log(Level.INFO, "FindByBookTitle operation executed successfully in " + (endTime - startTime) + " milliseconds.");
             return resultList;
+        } catch (NoResultException e) {
+            logger.log(Level.WARNING, "Authors for book with title " + title + " not found.");
+            return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error occurred during findByBookTitle operation", e);
-            return null;
+            throw e;
         }
     }
 }

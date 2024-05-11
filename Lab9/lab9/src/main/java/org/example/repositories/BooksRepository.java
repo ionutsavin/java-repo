@@ -20,8 +20,8 @@ public class BooksRepository extends DataRepository<Book, Integer> {
 
     public void createBook(String title, int year, String publishingHouseName) {
         try {
+            long startTime = System.currentTimeMillis();
             logger.log(Level.INFO, "Creating book with title: " + title);
-
             Book book = new Book(title, year);
             PublishingHouseRepository publishingHouseRepository = new PublishingHouseRepository(em);
             if (publishingHouseRepository.findByName(publishingHouseName) == null) {
@@ -34,72 +34,101 @@ public class BooksRepository extends DataRepository<Book, Integer> {
                 return;
             }
             persist(book);
-            logger.log(Level.INFO, "Book created successfully.");
+            long endTime = System.currentTimeMillis();
+            logger.log(Level.INFO, "CreateBook operation executed successfully in " + (endTime - startTime) + " milliseconds.");
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error creating book: " + e.getMessage(), e);
+            throw e;
         }
     }
 
     public Book findByTitle(String title) {
         try {
-            logger.log(Level.INFO, "Finding book by title: " + title);
-            return em.createNamedQuery("Book.findByTitle", getEntityClass())
+            long startTime = System.currentTimeMillis();
+            Book resultList = em.createNamedQuery("Book.findByTitle", getEntityClass())
                     .setParameter("title", title)
                     .getSingleResult();
+            long endTime = System.currentTimeMillis();
+            logger.log(Level.INFO, "FindByTitle operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            return resultList;
         } catch (NoResultException e) {
             logger.log(Level.WARNING, "Book with title '" + title + "' not found.");
             return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error finding book by title: " + e.getMessage(), e);
-            return null;
+            throw e;
         }
     }
 
     public List<Book> findByPublicationYear(int year) {
         try {
-            logger.log(Level.INFO, "Finding books by publication year: " + year);
-            return em.createNamedQuery("Book.findByPublicationYear", getEntityClass())
+            long startTime = System.currentTimeMillis();
+            List<Book> resultList = em.createNamedQuery("Book.findByPublicationYear", getEntityClass())
                     .setParameter("year", year)
                     .getResultList();
+            long endTime = System.currentTimeMillis();
+            logger.log(Level.INFO, "FindByPublicationYear operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            return resultList;
+        } catch (NoResultException e) {
+            logger.log(Level.WARNING, "Books published in " + year + " not found.");
+            return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error finding books by publication year: " + e.getMessage(), e);
-            return null;
+            throw e;
         }
     }
 
     public List<Book> findByPublishingHouseName(String name) {
         try {
-            logger.log(Level.INFO, "Finding books by publishing house name: " + name);
-            return em.createNamedQuery("Book.findByPublishingHouseName", getEntityClass())
+            long startTime = System.currentTimeMillis();
+            List<Book> resultList = em.createNamedQuery("Book.findByPublishingHouseName", getEntityClass())
                     .setParameter("name", name)
                     .getResultList();
+            long endTime = System.currentTimeMillis();
+            logger.log(Level.INFO, "FindByPublishingHouseName operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            return resultList;
+        } catch (NoResultException e) {
+            logger.log(Level.WARNING, "Books published by " + name + " not found.");
+            return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error finding books by publishing house name: " + e.getMessage(), e);
-            return null;
+            throw e;
         }
     }
 
     public List<Book> findByAuthorName(String name) {
         try {
-            logger.log(Level.INFO, "Finding books by author name: " + name);
-            return em.createNamedQuery("Book.findByAuthorName", getEntityClass())
+            long startTime = System.currentTimeMillis();
+            List<Book> resultList = em.createNamedQuery("Book.findByAuthorName", getEntityClass())
                     .setParameter("name", name)
                     .getResultList();
+            long endTime = System.currentTimeMillis();
+            logger.log(Level.INFO, "FindByAuthorName operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            return resultList;
+        } catch (NoResultException e) {
+            logger.log(Level.WARNING, "Books by author " + name + " not found.");
+            return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error finding books by author name: " + e.getMessage(), e);
-            return null;
+            throw e;
         }
     }
 
     public List<Book> findByGenreName(String name) {
         try {
-            logger.log(Level.INFO, "Finding books by genre name: " + name);
-            return em.createNamedQuery("Book.findByGenreName", getEntityClass())
+            long startTime = System.currentTimeMillis();
+            List<Book> resultList = em.createNamedQuery("Book.findByGenreName", getEntityClass())
                     .setParameter("name", name)
                     .getResultList();
+            long endTime = System.currentTimeMillis();
+            logger.log(Level.INFO, "FindByGenreName operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            return resultList;
+        } catch (NoResultException e) {
+            logger.log(Level.WARNING, "Books in genre " + name + " not found.");
+            return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error finding books by genre name: " + e.getMessage(), e);
-            return null;
+            throw e;
         }
     }
 }

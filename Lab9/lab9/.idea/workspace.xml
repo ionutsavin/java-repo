@@ -5,21 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30fa087a-b38b-4a3b-a753-855a4237a96d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/AuthorsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ecee272-467e-46cd-b677-245fbef2294e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0ecee272-467e-46cd-b677-245fbef2294e.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0ecee272-467e-46cd-b677-245fbef2294e/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0ecee272-467e-46cd-b677-245fbef2294e/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AuthorsRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/DataRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/AbstractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/AbstractEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AuthorsRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/repositories/AuthorsRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/AuthorsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/AuthorsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/BooksRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/BooksRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/DataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/DataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/GenresRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/GenresRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/PublishingHouseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/PublishingHouseRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,22 +29,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ionutsavin"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ionutsavin&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ionutsavin/java-repo.git",
-    "accountId": "a9349942-1a01-4d53-a129-5d3639d78931"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ionutsavin/java-repo.git&quot;,
+    &quot;accountId&quot;: &quot;a9349942-1a01-4d53-a129-5d3639d78931&quot;
   }
-}]]></component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -71,54 +63,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.AuthorsRepositoryTest.createAuthor.executor": "Run",
-    "JUnit.AuthorsRepositoryTest.executor": "Run",
-    "JUnit.AuthorsRepositoryTest.findAll.executor": "Run",
-    "JUnit.AuthorsRepositoryTest.findByBookTitle.executor": "Run",
-    "JUnit.AuthorsRepositoryTest.findById.executor": "Run",
-    "JUnit.AuthorsRepositoryTest.findByName.executor": "Run",
-    "JUnit.BooksRepositoryTest.createBook.executor": "Run",
-    "JUnit.BooksRepositoryTest.executor": "Run",
-    "JUnit.BooksRepositoryTest.findAll.executor": "Run",
-    "JUnit.BooksRepositoryTest.findByAuthorName.executor": "Run",
-    "JUnit.BooksRepositoryTest.findByGenreName.executor": "Run",
-    "JUnit.BooksRepositoryTest.findById.executor": "Run",
-    "JUnit.BooksRepositoryTest.findByPublicationYear.executor": "Run",
-    "JUnit.BooksRepositoryTest.findByPublishingHouseName.executor": "Run",
-    "JUnit.BooksRepositoryTest.findByTitle.executor": "Run",
-    "JUnit.GenresRepositoryTest.createGenre.executor": "Run",
-    "JUnit.GenresRepositoryTest.executor": "Run",
-    "JUnit.GenresRepositoryTest.findAll.executor": "Run",
-    "JUnit.GenresRepositoryTest.findByBookTitle.executor": "Run",
-    "JUnit.GenresRepositoryTest.findById.executor": "Run",
-    "JUnit.GenresRepositoryTest.findByName.executor": "Run",
-    "JUnit.PublishingHouseRepositoryTest.createPublishingHouse.executor": "Run",
-    "JUnit.PublishingHouseRepositoryTest.executor": "Run",
-    "JUnit.PublishingHouseRepositoryTest.findAll.executor": "Run",
-    "JUnit.PublishingHouseRepositoryTest.findByBookTitle.executor": "Run",
-    "JUnit.PublishingHouseRepositoryTest.findById.executor": "Run",
-    "JUnit.PublishingHouseRepositoryTest.findByName.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Java/java-repo/Lab9/lab9",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.AuthorsRepositoryTest.createAuthor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthorsRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthorsRepositoryTest.findAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthorsRepositoryTest.findByBookTitle.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthorsRepositoryTest.findById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthorsRepositoryTest.findByName.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BooksRepositoryTest.createBook.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BooksRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BooksRepositoryTest.findAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BooksRepositoryTest.findByAuthorName.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BooksRepositoryTest.findByGenreName.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BooksRepositoryTest.findById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BooksRepositoryTest.findByPublicationYear.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BooksRepositoryTest.findByPublishingHouseName.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BooksRepositoryTest.findByTitle.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GenresRepositoryTest.createGenre.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GenresRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GenresRepositoryTest.findAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GenresRepositoryTest.findByBookTitle.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GenresRepositoryTest.findById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GenresRepositoryTest.findByName.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PublishingHouseRepositoryTest.createPublishingHouse.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PublishingHouseRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PublishingHouseRepositoryTest.findAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PublishingHouseRepositoryTest.findByBookTitle.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PublishingHouseRepositoryTest.findById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PublishingHouseRepositoryTest.findByName.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Java/java-repo/Lab9/lab9&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -132,7 +124,7 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PublishingHouseRepositoryTest.createPublishingHouse">
+  <component name="RunManager" selected="JUnit.PublishingHouseRepositoryTest">
     <configuration name="AuthorsRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lab9" />
       <extension name="coverage">
@@ -211,8 +203,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PublishingHouseRepositoryTest.createPublishingHouse" />
         <item itemvalue="JUnit.PublishingHouseRepositoryTest" />
+        <item itemvalue="JUnit.PublishingHouseRepositoryTest.createPublishingHouse" />
         <item itemvalue="JUnit.GenresRepositoryTest" />
         <item itemvalue="JUnit.BooksRepositoryTest" />
         <item itemvalue="JUnit.AuthorsRepositoryTest" />
@@ -236,7 +228,8 @@
       <option name="presentableId" value="Default" />
       <updated>1714749648018</updated>
       <workItem from="1714749649052" duration="4611000" />
-      <workItem from="1715351646779" duration="9379000" />
+      <workItem from="1715351646779" duration="9615000" />
+      <workItem from="1715424093817" duration="1994000" />
     </task>
     <servers />
   </component>

@@ -27,10 +27,11 @@ public class PublishingHouseRepository extends DataRepository<PublishingHouse, I
             logger.log(Level.INFO, "FindByName operation executed successfully in " + (endTime - startTime) + " milliseconds.");
             return result;
         } catch (NoResultException e) {
+            logger.log(Level.WARNING, "PublishingHouse with name " + name + " not found.");
             return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error occurred during findByName operation", e);
-            return null;
+            throw e;
         }
     }
 
@@ -58,10 +59,11 @@ public class PublishingHouseRepository extends DataRepository<PublishingHouse, I
             logger.log(Level.INFO, "FindByBookTitle operation executed successfully in " + (endTime - startTime) + " milliseconds.");
             return result;
         } catch (NoResultException e) {
+            logger.log(Level.WARNING, "PublishingHouse with book title " + title + " not found.");
             return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error occurred during findByBookTitle operation", e);
-            return null;
+            throw e;
         }
     }
 }

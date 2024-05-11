@@ -7,8 +7,9 @@ import org.example.entities.Book;
 import org.junit.jupiter.api.*;
 import org.example.entities.PublishingHouse;
 
-import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -59,9 +60,9 @@ class PublishingHouseRepositoryTest {
         publishingHouseRepository.createPublishingHouse("Pearson PLC");
         PublishingHouse publishingHouse = publishingHouseRepository.findByName("Pearson PLC");
         assertNotNull(publishingHouse);
-        Iterator<Book> books = publishingHouse.getBooks().iterator();
-        assertEquals("Harry Potter and the Philosopher's Stone", books.next().getTitle());
-        assertEquals("Romeo and Juliet", books.next().getTitle());
+        Set<String> bookSet = Set.of("Harry Potter and the Philosopher's Stone", "Romeo and Juliet");
+        Set<String> publishingHouseBookSet = publishingHouse.getBooks().stream().map(Book::getTitle).collect(Collectors.toSet());
+        assertEquals(bookSet, publishingHouseBookSet);
     }
 
     @Test

@@ -1,6 +1,7 @@
 package org.example.repositories;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import org.example.entities.AbstractEntity;
 
 import java.io.Serializable;
@@ -17,7 +18,7 @@ public abstract class DataRepository<T extends AbstractEntity, ID extends Serial
 
     static {
         try {
-            FileHandler fileHandler = new FileHandler("logs/jpql_execution.log");
+            FileHandler fileHandler = new FileHandler("logger.log");
             logger.addHandler(fileHandler);
         } catch (Exception e) {
             e.printStackTrace();
@@ -35,9 +36,12 @@ public abstract class DataRepository<T extends AbstractEntity, ID extends Serial
             long endTime = System.currentTimeMillis();
             logger.info("FindById operation executed successfully in " + (endTime - startTime) + " milliseconds.");
             return result;
+        } catch (NoResultException e) {
+            logger.log(Level.WARNING, getEntityClass().getSimpleName() + " with id " + id + " not found.");
+            return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error occurred during findById operation", e);
-            return null;
+            throw e;
         }
     }
 
@@ -49,9 +53,12 @@ public abstract class DataRepository<T extends AbstractEntity, ID extends Serial
             long endTime = System.currentTimeMillis();
             logger.info("FindAll operation executed successfully in " + (endTime - startTime) + " milliseconds.");
             return resultList;
+        } catch (NoResultException e) {
+            logger.log(Level.WARNING, "No" + getEntityClass().getSimpleName() + " found in the database.");
+            return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error occurred during findAll operation", e);
-            return null;
+            throw e;
         }
     }
 

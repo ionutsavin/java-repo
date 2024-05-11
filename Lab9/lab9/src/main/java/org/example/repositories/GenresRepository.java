@@ -28,10 +28,11 @@ public class GenresRepository extends DataRepository<Genre, Integer> {
             logger.log(Level.INFO, "FindByName operation executed successfully in " + (endTime - startTime) + " milliseconds.");
             return result;
         } catch (NoResultException e) {
+            logger.log(Level.WARNING, "Genre with name " + name + " not found.");
             return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error occurred during findByName operation", e);
-            return null;
+            throw e;
         }
     }
 
@@ -58,10 +59,12 @@ public class GenresRepository extends DataRepository<Genre, Integer> {
             long endTime = System.currentTimeMillis();
             logger.log(Level.INFO, "FindByBookTitle operation executed successfully in " + (endTime - startTime) + " milliseconds.");
             return resultList;
+        } catch (NoResultException e) {
+            logger.log(Level.WARNING, "Genre with book title " + title + " not found.");
+            return null;
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error occurred during findByBookTitle operation", e);
-            return null;
+            throw e;
         }
     }
 }
-
