@@ -21,7 +21,6 @@ public class GameServer {
                 clientThread.start();
             }
         } catch (IOException e) {
-            System.err.println("Error accepting client connection: " + e.getMessage());
             e.printStackTrace();
         }
     }

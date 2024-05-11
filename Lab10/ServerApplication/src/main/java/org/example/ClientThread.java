@@ -10,6 +10,7 @@ public class ClientThread extends Thread {
     public ClientThread(Socket clientSocket, GameServer server) {
         this.clientSocket = clientSocket;
         this.server = server;
+        System.out.println("New client connected: " + clientSocket.getInetAddress() + ":" + clientSocket.getPort());
     }
 
     @Override
@@ -20,6 +21,7 @@ public class ClientThread extends Thread {
 
             String request;
             while ((request = in.readLine()) != null) {
+                System.out.println("Client request: " + request);
                 if (request.equals("stop")) {
                     out.println("Server stopped");
                     clientSocket.close();
