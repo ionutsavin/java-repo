@@ -68,5 +68,28 @@ public class AuthorsRepository extends DataRepository<Author, Integer> {
             throw e;
         }
     }
+    public void updateName(String oldName, String newName) {
+        try {
+            long startTime = System.currentTimeMillis();
+            Author author = findByName(oldName);
+            if (author != null) {
+                author.setName(newName);
+                em.getTransaction().begin();
+                em.merge(author);
+                em.getTransaction().commit();
+                long endTime = System.currentTimeMillis();
+                logger.log(Level.INFO, "UpdateName operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            } else {
+                logger.log(Level.WARNING, "Author with name " + oldName + " not found.");
+            }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            logger.log(Level.SEVERE, "Error occurred during updateName operation", e);
+            throw e;
+        }
+    }
+
 }
 

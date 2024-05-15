@@ -36,6 +36,10 @@ public class Author extends AbstractEntity implements Serializable {
         return books;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "Author{" +

@@ -66,4 +66,27 @@ public class PublishingHouseRepository extends DataRepository<PublishingHouse, I
             throw e;
         }
     }
+
+    public void updateName(String oldName, String newName) {
+        try {
+            long startTime = System.currentTimeMillis();
+            PublishingHouse publishingHouse = findByName(oldName);
+            if (publishingHouse != null) {
+                publishingHouse.setName(newName);
+                em.getTransaction().begin();
+                em.merge(publishingHouse);
+                em.getTransaction().commit();
+                long endTime = System.currentTimeMillis();
+                logger.log(Level.INFO, "UpdateName operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            } else {
+                logger.log(Level.WARNING, "Publishing House with name " + oldName + " not found.");
+            }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            logger.log(Level.SEVERE, "Error occurred during updateName operation", e);
+            throw e;
+        }
+    }
 }

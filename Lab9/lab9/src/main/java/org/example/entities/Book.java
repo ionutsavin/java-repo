@@ -71,6 +71,14 @@ public class Book extends AbstractEntity implements Serializable {
         this.publishingHouse = publishingHouse;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPublicationYear(int publicationYear) {
+        this.publicationYear = publicationYear;
+    }
+
     @Override
     public String toString() {
         return "Book{" +

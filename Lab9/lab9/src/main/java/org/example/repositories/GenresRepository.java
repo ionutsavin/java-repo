@@ -67,4 +67,27 @@ public class GenresRepository extends DataRepository<Genre, Integer> {
             throw e;
         }
     }
+
+    public void updateName(String oldName, String newName) {
+        try {
+            long startTime = System.currentTimeMillis();
+            Genre genre = findByName(oldName);
+            if (genre != null) {
+                genre.setName(newName);
+                em.getTransaction().begin();
+                em.merge(genre);
+                em.getTransaction().commit();
+                long endTime = System.currentTimeMillis();
+                logger.log(Level.INFO, "UpdateName operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            } else {
+                logger.log(Level.WARNING, "Genre with name " + oldName + " not found.");
+            }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            logger.log(Level.SEVERE, "Error occurred during updateName operation", e);
+            throw e;
+        }
+    }
 }

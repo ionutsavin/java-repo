@@ -76,6 +76,23 @@ class PublishingHouseRepositoryTest {
     void findAll() {
         List<PublishingHouse> publishingHouses = publishingHouseRepository.findAll();
         assertNotNull(publishingHouses);
-        assertEquals(13, publishingHouses.size());
+        assertEquals(12, publishingHouses.size());
+    }
+
+    @Test
+    void deletePublishingHouse() {
+        PublishingHouse publishingHouse = publishingHouseRepository.findById(9);
+        publishingHouseRepository.delete(publishingHouse);
+        PublishingHouse deletedPublishingHouse = publishingHouseRepository.findById(9);
+        assertNull(deletedPublishingHouse);
+    }
+
+    @Test
+    void updatePublishingHouse() {
+        PublishingHouse publishingHouse = publishingHouseRepository.findById(1);
+        assertEquals("Penguin Books", publishingHouse.getName());
+        publishingHouseRepository.updateName("Penguin Books", "Penguin Random House");
+        PublishingHouse updatedPublishingHouse = publishingHouseRepository.findById(1);
+        assertEquals("Penguin Random House", updatedPublishingHouse.getName());
     }
 }

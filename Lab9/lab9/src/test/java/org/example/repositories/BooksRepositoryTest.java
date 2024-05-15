@@ -3,6 +3,7 @@ package org.example.repositories;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import org.example.EntityManagerFactorySingleton;
+import org.example.entities.Book;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -76,5 +77,26 @@ class BooksRepositoryTest {
     @Test
     void findAll() {
         assertEquals(11, booksRepository.findAll().size());
+    }
+
+    @Test
+    void deleteBook() {
+        Book book = booksRepository.findById(120);
+        booksRepository.delete(book);
+        Book deletedBook = booksRepository.findById(120);
+        assertNull(deletedBook);
+    }
+
+    @Test
+    void updateTitle() {
+        booksRepository.updateTitle("The Hobbit", "The Hobbit: There and Back Again");
+        assertNotNull(booksRepository.findByTitle("The Hobbit: There and Back Again"));
+    }
+
+    @Test
+    void updatePublicationYear() {
+        booksRepository.updatePublicationYear("The Hobbit: There and Back Again", 1938);
+        Book book = booksRepository.findByTitle("The Hobbit: There and Back Again");
+        assertEquals(1938, book.getPublicationYear());
     }
 }

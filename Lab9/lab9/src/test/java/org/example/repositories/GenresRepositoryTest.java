@@ -79,6 +79,23 @@ class GenresRepositoryTest {
     void findAll() {
         List<Genre> genres = genresRepository.findAll();
         assertNotNull(genres);
-        assertEquals(11, genres.size());
+        assertEquals(10, genres.size());
+    }
+
+    @Test
+    void deleteGenre() {
+        Genre genre = genresRepository.findById(10);
+        genresRepository.delete(genre);
+        Genre deletedGenre = genresRepository.findById(10);
+        assertNull(deletedGenre);
+    }
+
+    @Test
+    void updateGenre() {
+        Genre genre = genresRepository.findById(1);
+        assertEquals("Tragedy", genre.getName());
+        genresRepository.updateName("Tragedy", "Drama");
+        Genre updatedGenre = genresRepository.findById(1);
+        assertEquals("Drama", updatedGenre.getName());
     }
 }

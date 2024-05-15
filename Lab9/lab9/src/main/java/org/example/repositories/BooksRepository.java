@@ -131,4 +131,50 @@ public class BooksRepository extends DataRepository<Book, Integer> {
             throw e;
         }
     }
+
+    public void updateTitle(String oldTitle, String newTitle) {
+        try {
+            long startTime = System.currentTimeMillis();
+            Book book = findByTitle(oldTitle);
+            if (book == null) {
+                logger.log(Level.WARNING, "Book with title '" + oldTitle + "' not found.");
+                return;
+            }
+            book.setTitle(newTitle);
+            em.getTransaction().begin();
+            em.merge(book);
+            em.getTransaction().commit();
+            long endTime = System.currentTimeMillis();
+            logger.log(Level.INFO, "UpdateTitle operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            logger.log(Level.SEVERE, "Error updating book title: " + e.getMessage(), e);
+            throw e;
+        }
+    }
+
+    public void updatePublicationYear(String title, int newYear){
+        try {
+            long startTime = System.currentTimeMillis();
+            Book book = findByTitle(title);
+            if (book == null) {
+                logger.log(Level.WARNING, "Book with title '" + title + "' not found.");
+                return;
+            }
+            book.setPublicationYear(newYear);
+            em.getTransaction().begin();
+            em.merge(book);
+            em.getTransaction().commit();
+            long endTime = System.currentTimeMillis();
+            logger.log(Level.INFO, "UpdateTitle operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            logger.log(Level.SEVERE, "Error updating book title: " + e.getMessage(), e);
+            throw e;
+        }
+    }
 }

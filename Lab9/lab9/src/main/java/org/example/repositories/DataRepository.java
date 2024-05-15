@@ -79,6 +79,28 @@ public abstract class DataRepository<T extends AbstractEntity, ID extends Serial
         }
     }
 
+    public void delete(T entity) {
+        try {
+            long startTime = System.currentTimeMillis();
+            if (entity != null) {
+                em.getTransaction().begin();
+                em.remove(entity);
+                em.getTransaction().commit();
+                long endTime = System.currentTimeMillis();
+                logger.info("Delete operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            } else {
+                logger.warning("Attempted to delete a null entity.");
+            }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            logger.log(Level.SEVERE, "Error occurred during delete operation", e);
+            throw e;
+        }
+    }
+
+
     protected abstract Class<T> getEntityClass();
 }
 

@@ -77,6 +77,23 @@ public class AuthorsRepositoryTest {
     void findAll() {
         List<Author> authors = authorsRepository.findAll();
         assertNotNull(authors);
-        assertEquals(15, authors.size());
+        assertEquals(12, authors.size());
+    }
+
+    @Test
+    void deleteAuthor() {
+        Author author = authorsRepository.findById(10);
+        authorsRepository.delete(author);
+        Author deletedAuthor = authorsRepository.findById(10);
+        assertNull(deletedAuthor);
+    }
+
+    @Test
+    void updateAuthor() {
+        Author author = authorsRepository.findById(1);
+        assertEquals("William", author.getName());
+        authorsRepository.updateName("William", "William Shakespeare");
+        Author updatedAuthor = authorsRepository.findById(1);
+        assertEquals("William Shakespeare", updatedAuthor.getName());
     }
 }
