@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30fa087a-b38b-4a3b-a753-855a4237a96d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Genre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/PublishingHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/PublishingHouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/AuthorsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/AuthorsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/BooksRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/BooksRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/DataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/DataRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/GenresRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/GenresRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/PublishingHouseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/PublishingHouseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/repositories/AuthorsRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/repositories/AuthorsRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/repositories/BooksRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/repositories/BooksRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/repositories/GenresRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/repositories/GenresRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/repositories/PublishingHouseRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/repositories/PublishingHouseRepositoryTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="30fa087a-b38b-4a3b-a753-855a4237a96d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -252,7 +237,7 @@
       <workItem from="1715424093817" duration="2468000" />
       <workItem from="1715439680010" duration="20000" />
       <workItem from="1715698272098" duration="2280000" />
-      <workItem from="1715764085774" duration="4709000" />
+      <workItem from="1715764085774" duration="4763000" />
     </task>
     <servers />
   </component>
