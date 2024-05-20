@@ -1,14 +1,33 @@
 package org.example;
 
+import org.example.Game.GameSession;
+
 import java.io.*;
 import java.net.*;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class GameServer {
     private ServerSocket serverSocket;
     private final int port;
+    private static final Map<String, GameSession> gameSessions = new HashMap<>();
+
 
     public GameServer(int port) {
         this.port = port;
+    }
+
+    public static void addGameSession(String gameId, GameSession gameSession) {
+        gameSessions.put(gameId, gameSession);
+    }
+
+    public static void removeGameSession(GameSession gameSession) {
+        gameSessions.entrySet().removeIf(entry -> entry.getValue().equals(gameSession));
+    }
+
+    public static Map<String, GameSession> getGameSessions() {
+        return gameSessions;
     }
 
     public void start() {
