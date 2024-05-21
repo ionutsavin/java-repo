@@ -1,6 +1,4 @@
-package org.example.Game;
-
-import org.example.GameServer;
+package org.example.game;
 
 import java.io.IOException;
 import java.io.PrintWriter;

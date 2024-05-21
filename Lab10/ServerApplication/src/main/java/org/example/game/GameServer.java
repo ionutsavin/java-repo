@@ -1,6 +1,6 @@
-package org.example;
+package org.example.game;
 
-import org.example.Game.GameSession;
+import org.example.ClientThread;
 
 import java.io.*;
 import java.net.*;

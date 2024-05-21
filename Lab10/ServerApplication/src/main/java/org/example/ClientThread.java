@@ -1,8 +1,9 @@
 package org.example;
 
-import org.example.Game.Cell;
-import org.example.Game.GameSession;
-import org.example.Game.Player;
+import org.example.game.Cell;
+import org.example.game.GameServer;
+import org.example.game.GameSession;
+import org.example.game.Player;
 
 import java.io.*;
 import java.net.*;

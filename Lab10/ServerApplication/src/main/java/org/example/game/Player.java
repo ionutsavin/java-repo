@@ -1,4 +1,4 @@
-package org.example.Game;
+package org.example.game;
 
 import java.net.Socket;
 import java.util.ArrayList;
