@@ -3,6 +3,7 @@ package org.example.repositories;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import org.example.entities.Author;
+import org.example.entities.Book;
 
 import java.util.logging.Level;
 import java.util.List;
@@ -68,6 +69,30 @@ public class AuthorsRepository extends DataRepository<Author, Integer> {
             throw e;
         }
     }
+
+    public void addBook(Book book, String authorName) {
+        try {
+            long startTime = System.currentTimeMillis();
+            Author author = findByName(authorName);
+            if (author != null) {
+                author.getBooks().add(book);
+                em.getTransaction().begin();
+                em.merge(author);
+                em.getTransaction().commit();
+                long endTime = System.currentTimeMillis();
+                logger.log(Level.INFO, "AddBook operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            } else {
+                logger.log(Level.WARNING, "Author with name " + authorName + " not found.");
+            }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            logger.log(Level.SEVERE, "Error occurred during addBook operation", e);
+            throw e;
+        }
+    }
+
     public void updateName(String oldName, String newName) {
         try {
             long startTime = System.currentTimeMillis();
@@ -87,6 +112,31 @@ public class AuthorsRepository extends DataRepository<Author, Integer> {
                 em.getTransaction().rollback();
             }
             logger.log(Level.SEVERE, "Error occurred during updateName operation", e);
+            throw e;
+        }
+    }
+
+    public void deleteByName(String name) {
+        try {
+            long startTime = System.currentTimeMillis();
+            Author author = findByName(name);
+            if (author != null) {
+                for (Book book : author.getBooks()) {
+                    book.getAuthors().remove(author);
+                }
+                em.getTransaction().begin();
+                em.remove(author);
+                em.getTransaction().commit();
+                long endTime = System.currentTimeMillis();
+                logger.log(Level.INFO, "DeleteByName operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            } else {
+                logger.log(Level.WARNING, "Author with name " + name + " not found.");
+            }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            logger.log(Level.SEVERE, "Error occurred during deleteByName operation", e);
             throw e;
         }
     }

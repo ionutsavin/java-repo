@@ -2,6 +2,7 @@ package org.example.repositories;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
+import org.example.entities.Book;
 import org.example.entities.Genre;
 
 import java.util.List;
@@ -50,6 +51,29 @@ public class GenresRepository extends DataRepository<Genre, Integer> {
         }
     }
 
+    public void addBook(Book book, String genreName) {
+        try {
+            long startTime = System.currentTimeMillis();
+            Genre genre = findByName(genreName);
+            if (genre != null) {
+                genre.getBooks().add(book);
+                em.getTransaction().begin();
+                em.merge(genre);
+                em.getTransaction().commit();
+                long endTime = System.currentTimeMillis();
+                logger.log(Level.INFO, "AddBook operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            } else {
+                logger.log(Level.WARNING, "Genre with name " + genreName + " not found.");
+            }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            logger.log(Level.SEVERE, "Error occurred during addBook operation", e);
+            throw e;
+        }
+    }
+
     public List<Genre> findByBookTitle(String title) {
         try {
             long startTime = System.currentTimeMillis();
@@ -87,6 +111,28 @@ public class GenresRepository extends DataRepository<Genre, Integer> {
                 em.getTransaction().rollback();
             }
             logger.log(Level.SEVERE, "Error occurred during updateName operation", e);
+            throw e;
+        }
+    }
+
+    public void deleteByName(String name) {
+        try {
+            long startTime = System.currentTimeMillis();
+            Genre genre = findByName(name);
+            if (genre != null) {
+                for (Book book : genre.getBooks()) {
+                    book.getGenres().remove(genre);
+                }
+                em.getTransaction().begin();
+                em.remove(genre);
+                em.getTransaction().commit();
+                long endTime = System.currentTimeMillis();
+                logger.log(Level.INFO, "DeleteByName operation executed successfully in " + (endTime - startTime) + " milliseconds.");
+            } else {
+                logger.log(Level.WARNING, "Genre with name " + name + " not found.");
+            }
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error occurred during deleteByName operation", e);
             throw e;
         }
     }
